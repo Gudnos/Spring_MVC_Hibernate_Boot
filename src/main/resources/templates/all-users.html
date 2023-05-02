@@ -24,8 +24,12 @@
         <td th:text="${user.age}"></td>
         <td th:text="${user.city}"></td>
         <td>
-            <a th:href="@{'/update/'+${user.id}}">update</a>
-            <a th:href="@{'/delete/'+${user.id}}">delete</a>
+            <form th:method="GET" th:action="@{'/update/'+${user.id}}">
+                <input type="submit" value="update">
+            </form>
+            <form th:method="DELETE" th:action="@{'/delete/'+${user.id}}">
+                <input type="submit" value="delete">
+            </form>
         </td>
     </tr>
     </tbody>

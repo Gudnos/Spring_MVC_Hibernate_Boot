@@ -19,7 +19,7 @@ public class UsersController {
     }
 
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String showAllUsers(Model model) {
 
         model.addAttribute("allUsers", userService.getAllUsers());
@@ -27,7 +27,7 @@ public class UsersController {
         return "all-users";
     }
 
-    @RequestMapping("/addNewUser")
+    @GetMapping("/addNewUser")
     public String addNewUser(Model model) {
 
         model.addAttribute("user", new User());
@@ -35,7 +35,7 @@ public class UsersController {
         return "user-info";
     }
 
-    @RequestMapping("/saveUser")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
 
         userService.saveUser(user);
@@ -43,7 +43,7 @@ public class UsersController {
         return "redirect:/";
     }
 
-    @RequestMapping("/update/{id}")
+    @GetMapping("/update/{id}")
     public String updatePage(@PathVariable("id") long id, Model model) {
 
         model.addAttribute("user", userService.getUser(id));
@@ -52,7 +52,7 @@ public class UsersController {
     }
 
 
-    @RequestMapping("/update")
+    @PutMapping("/update")
     public String updateUser(@ModelAttribute("user") User user) {
 
         userService.updateUser(user);
@@ -60,7 +60,7 @@ public class UsersController {
         return "redirect:/";
     }
 
-    @RequestMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") long id) {
 
         User user = userService.getUser(id);
